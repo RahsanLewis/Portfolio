@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,42 +10,72 @@
     <header>
         <h1>Welcome to My Portfolio</h1>
         <nav>
-            <ul>
-                <li><a href="#about">About Me</a></li>
+            <ul class="nav-list">
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About Me</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>This is where you'll write a brief introduction about yourself. Mention your skills, experience, and what you're passionate about in web development.</p>
-    </section>
+    <main>
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="carousel">
+                <div class="carousel-track-container">
+                    <ul class="carousel-track">
+                        <li class="carousel-slide">
+                            <img src="path_to_project_1_image.jpg" alt="Project 1 Screenshot" class="project-image">
+                            <h3>Project 1</h3>
+                            <p>Description of Project 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <a href="#">View Live</a> | <a href="#">Source Code</a>
+                        </li>
+                        <li class="carousel-slide">
+                            <img src="path_to_project_2_image.jpg" alt="Project 2 Screenshot" class="project-image">
+                            <h3>Project 2</h3>
+                            <p>Description of Project 2. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <a href="#">View Live</a> | <a href="#">Source Code</a>
+                        </li>
+                        <li class="carousel-slide">
+                            <img src="path_to_project_3_image.jpg" alt="Project 3 Screenshot" class="project-image">
+                            <h3>Project 3</h3>
+                            <p>Description of Project 3. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <a href="#">View Live</a> | <a href="#">Source Code</a>
+                        </li>
+                    </ul>
+                </div>
+                <button class="carousel-button left">❮</button>
+                <button class="carousel-button right">❯</button>
+            </div>
+                        
+        </section>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project">
-            <h3>Project Title</h3>
-            <p>Description of the project, technologies used, and what challenges you overcame during development.</p>
-            <a href="link_to_live_project">View Live</a>
-            <a href="link_to_repository">Source Code</a>
+        <div class="info-sections">
+            <section id="about">
+                <h2>About Me</h2>
+                <p>This is where you'll write a brief introduction about yourself. Mention your skills, experience, and what you're passionate about in web development.</p>
+            </section>
+
+            <section id="contact">
+                <h2>Contact Me</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" placeholder="Write your message here" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </section>
         </div>
-        <!-- You can duplicate the div above for each project you want to showcase -->
-    </section>
-
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">Send</button>
-        </form>
-    </section>
+    </main>
 
     <footer>
         <p>© 2024 Your Name. All rights reserved.</p>

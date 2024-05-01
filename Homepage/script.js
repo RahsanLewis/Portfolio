@@ -57,3 +57,14 @@ document.addEventListener('DOMContentLoaded', function() {
         moveToSlide(track, currentSlide, prevSlide);
     });
 });
+
+document.querySelector('.carousel-button.right').addEventListener('click', function() {
+    var track = document.querySelector('.carousel-track');
+    // Assuming each slide is 100% of the view, move it -100% per slide
+    track.style.transform = 'translateX(-100%)'; // Adjust according to current slide view
+});
+
+document.querySelector('.carousel-button.left').addEventListener('click', function() {
+    var track = document.querySelector('.carousel-track');
+    track.style.transform = 'translateX(0)'; // Move back to the first slide
+});

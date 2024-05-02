@@ -4,14 +4,7 @@ body, html {
     height: 100%;
     overflow: hidden; /* Prevents scrolling due to the size of the pseudo-element */
     box-sizing: border-box; /* Ensures padding and border are included in width/height calculations */
-    font-family: 'Montserrat', sans-serif; /* Applying Montserrat font */
-}
-
-.container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;  /* This keeps all inner content from bleeding out */
+    font-family: 'Major Mono Display', monospace;
 }
 
 body::before {
@@ -21,9 +14,9 @@ body::before {
     left: -50px;
     width: calc(100% + 100px);  /* Increase width to compensate for negative margins */
     height: calc(100% + 100px);  /* Increase height */
-    background: url('images/laptop.jpg') no-repeat center center;
+    background: url('images/screen.jpg') no-repeat center center;
     background-size: cover;
-    filter: blur(6px);
+    filter: blur(10px);
     z-index: -1;
 }
 
@@ -33,17 +26,17 @@ body::before {
     align-items: center;
     padding: 10px 20px;
     background: rgba(0, 0, 0, 0); /* Invisible background to avoid adding any glow or border */
-    z-index: 1; /* Higher z-index to ensure it is above the blurred background */
+    z-index: 10; /* Higher z-index to ensure it is above the blurred background */
 }
 
 .header .logo {
-    color: white; /* Ensures visibility against a potentially dark background */
-    height: 150px;
-    width: 150px;
-    font-family: 'Dancing Script', cursive;
-    font-size: 40px;
-    font-weight: 700; /* Bold font weight for emphasis */
-    text-decoration: none;
+    height: 85px; /* Logo dimensions */
+    width: 85px; /* Logo dimensions */
+    margin: 0 auto; /* Center the logo */
+}
+
+.nav-left, .nav-right {
+    flex: 1;  /* Each navigation takes equal space */
 }
 
 .header nav a {
@@ -54,7 +47,7 @@ body::before {
 }
 
 .header .nav-primary {
-    color: white; /* Gold color for primary links */
+    color: white; /* White color for primary links */
     text-decoration: none;
     margin: 0 15px;
     font-size: 18px;
@@ -64,45 +57,147 @@ body::before {
 }
 
 .header .nav-primary:hover {
-    background-color: white; /* Gold background on hover */
+    background-color: white; /* White background on hover */
     color: black; /* Text color change on hover */
 }
 
 .header .nav-secondary {
-    visibility: hidden;  /* Makes the link invisible */
-    pointer-events: none;  /* Disables all mouse events on the link */
-    opacity: 0;  /* Sets the link's opacity to 0 for complete invisibility */
+    color: white; /* White color for primary links */
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header .nav-secondary:hover {
+    background-color: white; /* White background on hover */
+    color: black; /* Text color change on hover */
 }
 
 .about-me {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Aligns content vertically center */
-    align-items: center; /* Aligns content horizontally center */
-    padding-top: 150px;
-    margin-left: 100px;
-    margin-right: 100px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0px; /* Adjusted padding */
+    padding-bottom: 0px; /* Ensure padding doesn't push content too much */
+    margin-right: auto; /* Changed from fixed margin */
+    margin-left: auto; /* Changed from fixed margin */
+    max-width: 960px; /* Max width to control width on larger screens */
     text-align: center;
     font-size: 25px;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    z-index: 1; /* Ensures it's above the blurred background */
+    z-index: 2; /* Ensures it's above the background but properly layered */
+}
+
+@media (max-width: 768px) {
+    .about-me {
+        padding: 10px;
+        font-size: 20px;
+    }
+}
+
+.project-showcase {
+    position: relative;
+    width: 45%;
+    margin: 0 auto;
+    overflow: hidden; /* Prevents overflow of child elements */
+    padding: 20px; /* Internal spacing for aesthetic padding */
+    background-color: rgba(255, 255, 255, 0.0); /* Light semi-transparent background for visibility */
+    border-radius: 8px; /* Rounded corners for a smoother look */
+    display: flex; /* Using flex to better manage centering */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    justify-content: center; /* Center children vertically */
+}
+
+.project-item {
+    display: none;  
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+.project-item.active {
+    display: grid; /* Enable grid for active project item */
+    place-items: top; /* Center the content in the grid area */
+    width: 100%; 
+}
+
+.project-item img {
+    width: 320px;  
+    height: 320px;
+    border: .5px solid #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Smooth transition for hover effects */
+    cursor: pointer; /* Indicates that the image is interactive */
+}
+
+.project-item img:hover {
+    transform: scale(1.05); /* Slightly enlarges the image */
+    border-color: white; /* Changes border color to black */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.5); /* Enhances the shadow for a lifted effect */
+}
+
+.project-description {
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    padding: 10px;
+    text-shadow: 1px 1px 2px black;
+}
+
+
+.prev, .next {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px 20px;
+    font-size: 18px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-family: 'Major Mono Display', monospace;
+}
+
+.prev:hover, .next:hover {
+    background-color: white;
+    color: black;
+    text-decoration: none;
+}
+
+.prev {
+    left: 400px;
+}
+
+.next {
+    right: 400px;
 }
 
 .footer {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
     position: absolute;
     bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-    font-size: 18px;
+    left: 0;
+    background-color: transparent;
     color: white;
-    z-index: 1; /* Ensures it's above the blurred background */
+    font-size: 18px;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    z-index: 10;
 }
 
-.footer::after {
-    content: '⬇';
-    display: block;
-    font-size: 24px;
-    color: white;
+.footer:hover {
+    color: black;
+    background-color: white;
 }
+
+

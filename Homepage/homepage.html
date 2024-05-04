@@ -3,44 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap"
+      rel="stylesheet"
+    />
     <title>Your Portfolio</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="homepage.css" />
   </head>
   <body>
     <header class="header">
       <nav>
-        <a href="#projects" class="nav-secondary">Rahsan Lewis | Web Dev</a>
+        <a href="/Homepage/homepage.html" class="nav-secondary">Rahsan Lewis | Web Dev</a>
       </nav>
-      <img
-        src="images/technology-white.png"
-        alt="Rahsan Lewis Logo"
-        class="logo"
-      />
+      <a href="/Homepage/homepage.html">
+        <img
+          src="/images/technology-white.png"
+          alt="Rahsan Lewis Logo"
+          class="logo"
+        />
+      </a>
       <nav>
-        <a href="#projects" class="nav-primary">Projects</a>
-        <a href="#contact" class="nav-primary">Contact Me</a>
+        <a href="/Projects/projects.html" class="nav-primary">Projects</a>
+        <a href="/ContactMe/contact.html" class="nav-primary">Contact Me</a>
       </nav>
     </header>
     <section class="about-me" id="about">
       <h1>I craft unique, visually engaging experiences.</h1>
     </section>
     <section class="project-showcase">
-        <div class="project-item active">
-          <img src="images/laptop.jpg" alt="Project 1 Description" />
-          <h2 class="project-description">Project 1 Name</h2>
-        </div>
-        <div class="project-item">
-          <img src="images/code2.jpg" alt="Project 2 Description" />
-          <h2 class="project-description">Project 2 Name</h2>
-        </div>
-        <!-- Add more project items as needed -->
-      </section>
-      <button class="prev">&#10094; Prev</button>
-      <button class="next">Next &#10095;</button>      
+      <div class="project-item active">
+        <img src="/images/laptop.jpg" alt="Project 1 Description" />
+        <h2 class="project-description">Project 1 Name</h2>
+      </div>
+      <div class="project-item">
+        <img src="/images/code3.jpg" alt="Project 2 Description" />
+        <h2 class="project-description">Project 2 Name</h2>
+      </div>
+      <!-- Add more project items as needed -->
+    </section>
+    <button class="prev">&#10094; Prev</button>
+    <button class="next">Next &#10095;</button>
     <footer class="footer" id="contact">
-      <p>Learn more about what I do</p>
+      <p>
+        <a href="/Projects/projects.html" class="footer-link"
+          >See all of my projects here</a
+        >
+      </p>
     </footer>
-    <script src="script.js"></script>
+    <script src="homepage.js"></script>
   </body>
 </html>

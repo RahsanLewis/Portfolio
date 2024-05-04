@@ -1,0 +1,180 @@
+/* Basic reset for margins, padding, and box sizing across all elements */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Ensures padding and border are included in width/height calculations */
+  height: 100%; /* Full height to support flexbox layout */
+  overflow: hidden; /* Prevents unwanted scrolling from overflow */
+  font-family: "Major Mono Display", monospace; /* Monospaced font for a uniform typographic look */
+}
+
+/* Background settings for a full-page background image */
+body::before {
+  content: "";
+  position: absolute;
+  top: -50px; /* Extends the background slightly above the viewport to avoid gaps */
+  left: -50px; /* Extends the background slightly beyond the viewport to the left */
+  width: calc(
+    100% + 100px
+  ); /* Ensures the background covers the entire viewport and extra to prevent gaps */
+  height: calc(
+    100% + 100px
+  ); /* Same as width, covers the entire viewport height plus extra */
+  background: url("/images/screen.jpg") no-repeat center center; /* Background image setup */
+  background-size: cover; /* Ensures the background covers the entire area without being stretched or pixelated */
+  filter: blur(10px); /* Applies a blur effect for a frosted glass look */
+  z-index: -1; /* Keeps the background behind all other content */
+}
+
+/* Header styling */
+.header {
+  display: flex;
+  justify-content: space-between; /* Distributes space between and around content items */
+  align-items: center; /* Centers items vertically within the header */
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0); /* Transparent background for a seamless look */
+  z-index: 10; /* Ensures header is above other content */
+}
+
+/* Logo styling within the header */
+.header .logo {
+  height: 85px; /* Fixed height for the logo */
+  width: 85px; /* Fixed width for the logo */
+  margin: 0 auto; /* Centers the logo horizontally */
+}
+
+.nav-left, .nav-right {
+    flex: 1;  /* Each navigation takes equal space */
+}
+
+/* Navigation styling */
+.header nav a {
+  color: white;
+  text-decoration: none; /* Removes underline from links */
+  margin: 0 15px;
+  font-size: 24px; /* Larger font size for better readability */
+}
+
+/* Primary navigation link styling */
+.header .nav-primary {
+  color: white; /* Text color */
+  text-decoration: none; /* Removes underline */
+  margin: 0 15px;
+  font-size: 18px; /* Smaller font size than the logo text */
+  padding: 10px;
+  border-radius: 5px; /* Rounded corners for the link buttons */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+/* Hover effect for primary navigation links */
+.header .nav-primary:hover {
+  background-color: white; /* Changes background to white */
+  color: black; /* Changes text color to black */
+}
+
+/* Secondary navigation link styling */
+.header .nav-secondary {
+  color: white; /* Text color */
+  text-decoration: none; /* Removes underline */
+  margin: 0 15px;
+  font-size: 18px; /* Same font size as primary links */
+  padding: 10px;
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+/* Hover effect for secondary navigation links */
+.header .nav-secondary:hover {
+  background-color: white; /* Changes background to white */
+  color: black; /* Changes text color to black */
+}
+
+/* Styling for the 'About Me' section */
+.about-me {
+  display: flex;
+  flex-direction: column; /* Stacks children vertically */
+  justify-content: center; /* Centers content vertically */
+  align-items: center; /* Centers content horizontally */
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-right: auto; /* Centers the section horizontally */
+  margin-left: auto;
+  max-width: 960px; /* Maximum width for readability */
+  text-align: center; /* Centers text within the section */
+  font-size: 25px; /* Larger font size for primary content */
+  color: white; /* Text color for readability against darker backgrounds */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for better legibility */
+  z-index: 2; /* Ensures content is above the background but under any popups/modals */
+}
+
+/* Grid layout for projects */
+.projects-grid {
+  padding: 40px; /* Padding around the grid */
+  text-align: center; /* Centers text within the grid */
+}
+
+.projects-grid h2 {
+  color: #333; /* Darker text color for titles */
+  margin-bottom: 20px; /* Space below the title */
+}
+
+.grid-container {
+  display: grid; /* Enables grid layout */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  ); /* Creates responsive columns */
+  gap: 20px; /* Space between grid items */
+  padding: 20px; /* Padding within the grid container */
+  align-items: start; /* Aligns items to the start of their grid cell */
+}
+
+.project-item {
+  background: white; /* Background color for project items */
+  border: 1px solid #ccc; /* Border for each item */
+  border-radius: 8px; /* Rounded corners for the items */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for a 3D effect */
+  overflow: hidden; /* Hides any overflow content */
+  display: flex; /* Enables flexbox within project items */
+  flex-direction: column; /* Stacks children of the project item vertically */
+}
+
+.project-item img {
+  width: 100%; /* Ensures images fill their container */
+  height: auto; /* Keeps image aspect ratio intact */
+}
+
+.project-title {
+  padding: 10px; /* Padding around the title within project items */
+  color: #333; /* Text color */
+  font-size: 18px; /* Text size */
+}
+
+/* Footer styling */
+.footer {
+  width: 100%; /* Full width of the content area */
+  padding: 20px 0; /* Padding above and below the text */
+  text-align: center; /* Centers the footer text */
+  position: absolute;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: white; /* Text color */
+  background-color: transparent; /* Transparent background */
+  font-size: 18px; /* Text size */
+  transition: background-color 0.3s, color 0.3s; /* Transition for hover effects */
+  z-index: 10; /* Ensures footer is above most content but below modals/popups */
+}
+
+.footer-link {
+    color: white;  /* Match the footer text color */
+    text-decoration: none;  /* No underline */
+    transition: color 0.3s ease;  /* Smooth transition for hover effect */
+}
+
+.footer-link:hover {
+    background-color: white;
+    color: black;
+    text-decoration: none;
+}

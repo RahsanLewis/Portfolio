@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap"
+      rel="stylesheet"
+    />
+    <title>Contact Me - Rahsan Lewis</title>
+    <link href="contact.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="header">
+      <nav>
+        <a href="/Homepage/homepage.html" class="nav-secondary"
+          >Rahsan Lewis | Web Dev</a
+        >
+      </nav>
+      <a href="/Homepage/homepage.html">
+        <img
+          src="/images/technology-white.png"
+          alt="Rahsan Lewis Logo"
+          class="logo"
+        />
+      </a>
+      <nav>
+        <a href="/Projects/projects.html" class="nav-primary">Projects</a>
+        <a href="/ContactMe/contact.html" class="nav-primary">Contact Me</a>
+      </nav>
+    </header>
+    <section class="content">
+      <section class="contact-info">
+        <h2>Reach Out To Me On One Of These Platforms</h2>
+        <div class="social-links">
+          <a
+            href="https://www.linkedin.com/in/rahsan-lewis/"
+            class="social-link"
+          >
+            <img src="/images/LinkedIn-Logos/LI-In-Bug.png" alt="LinkedIn" />
+            LinkedIn @RahsanLewis
+          </a>
+          <a href="https://github.com/RahsanLewis" class="social-link">
+            <img src="/images/github-mark/github-mark-white.png" alt="GitHub" />
+            GitHub @RahsanLewis
+          </a>
+          <a href="https://twitter.com/RahsanLewis" class="social-link">
+            <img src="/images/x-logo/logo-white.png" alt="Twitter" />
+            Twitter @RahsanLewis
+          </a>
+          <a href="mailto:rahsanlewis@gmail.com" class="social-link">
+            <img src="/images/Gmail_Logo_32px.png" alt="Email" />
+            rahsanlewis@gmail.com
+          </a>
+        </div>
+      </section>
+      <form action="submit_form.php" method="POST">
+        <h2>Contact Form</h2>
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit" class="nav-primary">Send Message</button>
+      </form>
+    </section>
+    <footer class="footer" id="contact">
+      <p>
+        <a href="/Homepage/homepage.html" class="footer-link"
+          >Return to the homepage</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>

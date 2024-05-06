@@ -1,201 +1,282 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    font-family: 'Major Mono Display', monospace;
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Major Mono Display", monospace;
+  font-weight: 700;
+  font-style: normal;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 body::before {
-    content: "";
-    position: absolute;
-    top: -50px;
-    left: -50px;
-    width: calc(100% + 100px);
-    height: calc(100% + 100px);
-    background: url('/images/screen.jpg') no-repeat center center;
-    background-size: cover;
-    filter: blur(10px);
-    z-index: -1;
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  /* background: url("/images/screen.jpg") no-repeat center center; */
+  background-size: cover;
+  z-index: -1;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background: rgba(0, 0, 0, 0);
-    z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 45px 20px; /* Increased padding to give more space */
+  background-color: #222;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  position: relative; /* Ensure the logo can be absolutely positioned relative to this container */
+  z-index: 10;
 }
 
 .header .logo {
-    height: 85px;
-    width: 85px;
-    margin: 0 auto;
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Offset by half its size to truly center it */
+  height: 65px; /* Adjusted to match your original size or make it proportional */
+  width: 65px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.nav-left, .nav-right {
-    flex: 1;
+.header .logo:hover {
+  transform: translate(-50%, -50%) scale(1.05); /* Maintain centering even when scaled */
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  flex: 1;
+  justify-content: center; /* This will align the links to center in their respective spaces */
 }
 
 .header nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 24px;
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 24px;
 }
 
-.header .nav-primary {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 18px;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.header .nav-primary:hover {
-    background-color: white;
-    color: black;
-}
-
+.header .nav-primary,
 .header .nav-secondary {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 18px;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 18px;
+  letter-spacing: 1px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
+.header .nav-primary:hover,
 .header .nav-secondary:hover {
-    background-color: white;
-    color: black;
+  background-color: white;
+  color: black;
+}
+
+.featured-project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: fit-content;
+  margin: 50px 0px 0px 0px;
+  padding-bottom: 50px;
+  width: 100%;
+}
+
+.project-card {
+  width: 80%;
+  height: 500px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Ensures vertical centering of children */
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.75);
+}
+
+.project-card img {
+  width: 60%;
+  height: 100%; /* Make image fill the card height */
+  object-fit: cover;
+}
+
+.project-info {
+  width: 40%;
+  color: black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center content */
+  text-align: center;
+  letter-spacing: 1px;
+  overflow: hidden; /* Hide overflow to maintain clean edges */
+  height: 80%; /* Reduce the effective height filled by text */
+  margin: auto 0; /* Center the smaller content area vertically */
+}
+
+h1,
+h2 {
+  margin-bottom: 10px;
+  font-size: 40px;
 }
 
 .about-me {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 960px;
-    text-align: center;
-    font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  margin: 20px auto;
+  max-width: 960px;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  z-index: 2;
+}
+
+.about-me h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.about-me p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.next-button {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  background-color: white; /* Ensures the button background is black */
+  font-size: 18px;
+  transition: background-color 0.3s, color 0.3s;
+  position: relative;
+  clear: both;
+}
+
+.next-button a {
+  color: black; /* Ensures the link is visible against a black background */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.next-button a:hover {
+    background-color: black;
     color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    z-index: 2;
-}
-
-.project-showcase {
-    position: relative;
-    width: 45%;
-    margin: 0 auto;
-    overflow: hidden;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.0);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.project-item {
-    display: none;
-    text-align: center;
-    position: relative;
-    width: 100%;
-}
-
-.project-item.active {
-    display: grid;
-    place-items: top;
-    width: 100%;
-}
-
-.project-item img {
-    width: 320px;
-    height: 320px;
-    border: .5px solid #fff;
-    border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    cursor: pointer;
-}
-
-.project-item img:hover {
-    transform: scale(1.05);
-    border-color: white;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.5);
-}
-
-.project-description {
-    background-color: rgba(0, 0, 0, 0);
-    color: white;
-    padding: 10px;
-    text-shadow: 1px 1px 2px black;
-}
-
-.prev, .next {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 10px 20px;
-    font-size: 18px;
-    color: white;
-    background-color: transparent;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    font-family: 'Major Mono Display', monospace;
-}
-
-.prev {
-    left: 450px;
-    top: 450px;
-}
-
-.next {
-    right: 450px;
-    top: 450px;
-}
-
-.prev:hover, .next:hover {
-    background-color: white;
-    color: black;
-    text-decoration: none;
 }
 
 .footer {
-    width: 100%;
-    padding: 20px 0;
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color: transparent;
-    color: white;
-    font-size: 18px;
-    transition: background-color 0.3s, color 0.3s;
-    z-index: 10;
+  background-color: #222;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-family: "Major Mono Display", monospace;
 }
 
-.footer-link {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s ease;
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: fit-content;
+  height: 120px;
 }
 
-.footer-link:hover {
-    background-color: white;
-    color: black;
-    text-decoration: none;
+.footer-section {
+  flex: 1; /* Makes sure that each section can grow as needed */
 }
+
+.footer-section h4 {
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 16px;
+}
+
+.footer-section ul li img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.footer-section ul li a:hover,
+.footer-section a.social-link:hover {
+  color: #00aaff;
+}
+
+.footer-section p,
+.footer-section a {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.footer-bottom {
+  padding-top: 20px;
+  font-size: 12px;
+}
+
+.footer-bottom p {
+    font-size: 12px;
+  }
+
+.social-links-container {
+    display: flex;
+    justify-content: center; /* Ensure horizontal alignment */
+    gap: 20px; /* Space between each link */
+  }
+  
+  .social-link {
+    align-items: center; /* Vertically centers the contents */
+    padding: 10px; /* Uniform padding around the image */
+    background: rgba(255, 255, 255, 0); /* Transparent background */
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .social-link img {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .social-link:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Visible background on hover */
+    transform: scale(1.1); /* Slightly enlarges the link on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds shadow for depth on hover */
+  }
+  

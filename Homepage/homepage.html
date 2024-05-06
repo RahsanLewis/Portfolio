@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
+      href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap"
       rel="stylesheet"
     />
@@ -13,7 +17,9 @@
   <body>
     <header class="header">
       <nav>
-        <a href="/Homepage/homepage.html" class="nav-secondary">Rahsan Lewis | Web Dev</a>
+        <a href="/Homepage/homepage.html" class="nav-secondary"
+          >Rahsan Lewis | Web Dev</a
+        >
       </nav>
       <a href="/Homepage/homepage.html">
         <img
@@ -23,33 +29,65 @@
         />
       </a>
       <nav>
-        <a href="/Projects/projects.html" class="nav-primary">Projects</a>
+        <a href="/Projects/projects.html" class="nav-primary">Full Portfolio</a>
         <a href="/ContactMe/contact.html" class="nav-primary">Contact Me</a>
       </nav>
     </header>
-    <section class="about-me" id="about">
-      <h1>I craft unique, visually engaging experiences.</h1>
-    </section>
-    <section class="project-showcase">
-      <div class="project-item active">
+    <section class="featured-project">
+      <div class="project-card">
         <img src="/images/laptop.jpg" alt="Project 1 Description" />
-        <h2 class="project-description">Project 1 Name</h2>
+        <div class="project-info">
+          <h2>The Aid Arcade</h2>
+          <p>
+            Gamifying the process of donating to charity.
+          </p>
+        </div>
       </div>
-      <div class="project-item">
-        <img src="/images/code3.jpg" alt="Project 2 Description" />
-        <h2 class="project-description">Project 2 Name</h2>
-      </div>
-      <!-- Add more project items as needed -->
     </section>
-    <button class="prev">&#10094; Prev</button>
-    <button class="next">Next &#10095;</button>
-    <footer class="footer" id="contact">
+    <section class="next-button">
       <p>
         <a href="/Projects/projects.html" class="footer-link"
           >See all of my projects here</a
         >
       </p>
-    </footer>
+    </section>
+    <footer class="footer">
+      <div class="footer-content">
+        <section class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/Homepage/homepage.html">Home</a></li>
+            <li><a href="/Projects/projects.html">Projects</a></li>
+            <li><a href="/ContactMe/contact.html">Contact</a></li>
+          </ul>
+        </section>
+        <section class="footer-section">
+          <h4>Follow Me</h4>
+          <div class="social-links">
+            <a
+              href="https://www.linkedin.com/in/rahsan-lewis/"
+              class="social-link"
+            >
+              <img src="/images/LinkedIn-Logos/LI-In-Bug.png" alt="LinkedIn" />
+            </a>
+            <a href="https://github.com/RahsanLewis" class="social-link">
+              <img src="/images/github-mark/github-mark-white.png" alt="GitHub" />
+            </a>
+            <a href="https://twitter.com/RahsanLewis" class="social-link">
+              <img src="/images/x-logo/logo-white.png" alt="Twitter" />
+            </a>
+          </div>
+        </section>
+        <section class="footer-section">
+          <h4>Contact</h4>
+          <p>Email: your.email@example.com</p>
+          <p>Phone: (123) 456-7890</p>
+        </section>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Rahsan Lewis. All rights reserved.</p>
+      </div>
+    </footer>    
     <script src="homepage.js"></script>
   </body>
 </html>

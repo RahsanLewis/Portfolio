@@ -1,180 +1,254 @@
-/* Basic reset for margins, padding, and box sizing across all elements */
 body,
 html {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Ensures padding and border are included in width/height calculations */
-  height: 100%; /* Full height to support flexbox layout */
-  overflow: hidden; /* Prevents unwanted scrolling from overflow */
-  font-family: "Major Mono Display", monospace; /* Monospaced font for a uniform typographic look */
+  box-sizing: border-box;
+  font-family: "Major Mono Display", monospace;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Background settings for a full-page background image */
 body::before {
   content: "";
-  position: absolute;
-  top: -50px; /* Extends the background slightly above the viewport to avoid gaps */
-  left: -50px; /* Extends the background slightly beyond the viewport to the left */
-  width: calc(
-    100% + 100px
-  ); /* Ensures the background covers the entire viewport and extra to prevent gaps */
-  height: calc(
-    100% + 100px
-  ); /* Same as width, covers the entire viewport height plus extra */
-  background: url("/images/screen.jpg") no-repeat center center; /* Background image setup */
-  background-size: cover; /* Ensures the background covers the entire area without being stretched or pixelated */
-  filter: blur(10px); /* Applies a blur effect for a frosted glass look */
-  z-index: -1; /* Keeps the background behind all other content */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  /* background: url("/images/screen.jpg") no-repeat center center; */
+  background-size: cover;
+  z-index: -1;
 }
 
-/* Header styling */
 .header {
   display: flex;
-  justify-content: space-between; /* Distributes space between and around content items */
-  align-items: center; /* Centers items vertically within the header */
-  padding: 10px 20px;
-  background: rgba(0, 0, 0, 0); /* Transparent background for a seamless look */
-  z-index: 10; /* Ensures header is above other content */
+  justify-content: space-between;
+  align-items: center;
+  padding: 45px 20px; /* Increased padding to give more space */
+  background-color: #222;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  position: relative; /* Ensure the logo can be absolutely positioned relative to this container */
+  z-index: 10;
 }
 
-/* Logo styling within the header */
 .header .logo {
-  height: 85px; /* Fixed height for the logo */
-  width: 85px; /* Fixed width for the logo */
-  margin: 0 auto; /* Centers the logo horizontally */
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Offset by half its size to truly center it */
+  height: 65px; /* Adjusted to match your original size or make it proportional */
+  width: 65px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.nav-left, .nav-right {
-    flex: 1;  /* Each navigation takes equal space */
+.header .logo:hover {
+  transform: translate(-50%, -50%) scale(1.05); /* Maintain centering even when scaled */
 }
 
-/* Navigation styling */
+.nav-left,
+.nav-right {
+  display: flex;
+  flex: 1;
+  justify-content: center; /* This will align the links to center in their respective spaces */
+}
+
 .header nav a {
   color: white;
-  text-decoration: none; /* Removes underline from links */
+  text-decoration: none;
   margin: 0 15px;
-  font-size: 24px; /* Larger font size for better readability */
+  font-size: 24px;
 }
 
-/* Primary navigation link styling */
-.header .nav-primary {
-  color: white; /* Text color */
-  text-decoration: none; /* Removes underline */
-  margin: 0 15px;
-  font-size: 18px; /* Smaller font size than the logo text */
-  padding: 10px;
-  border-radius: 5px; /* Rounded corners for the link buttons */
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
-}
-
-/* Hover effect for primary navigation links */
-.header .nav-primary:hover {
-  background-color: white; /* Changes background to white */
-  color: black; /* Changes text color to black */
-}
-
-/* Secondary navigation link styling */
+.header .nav-primary,
 .header .nav-secondary {
-  color: white; /* Text color */
-  text-decoration: none; /* Removes underline */
+  color: white;
+  text-decoration: none;
   margin: 0 15px;
-  font-size: 18px; /* Same font size as primary links */
+  font-size: 18px;
+  letter-spacing: 1px;
   padding: 10px;
-  border-radius: 5px; /* Rounded corners */
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* Hover effect for secondary navigation links */
+.header .nav-primary:hover,
 .header .nav-secondary:hover {
-  background-color: white; /* Changes background to white */
-  color: black; /* Changes text color to black */
+  background-color: white;
+  color: black;
 }
 
-/* Styling for the 'About Me' section */
-.about-me {
-  display: flex;
-  flex-direction: column; /* Stacks children vertically */
-  justify-content: center; /* Centers content vertically */
-  align-items: center; /* Centers content horizontally */
-  padding-top: 0px;
-  padding-bottom: 0px;
-  margin-right: auto; /* Centers the section horizontally */
-  margin-left: auto;
-  max-width: 960px; /* Maximum width for readability */
-  text-align: center; /* Centers text within the section */
-  font-size: 25px; /* Larger font size for primary content */
-  color: white; /* Text color for readability against darker backgrounds */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for better legibility */
-  z-index: 2; /* Ensures content is above the background but under any popups/modals */
+.filter-container {
+  text-align: left; /* Aligns the content of the filter container to the left */
+  margin: 20px 0px 10px 50px; /* Keeps the vertical margin */
+  color: black; /* Sets the text color to white */
+  font-weight: bold;
+  font-size: 20px;
 }
 
-/* Grid layout for projects */
+.filter-container select {
+  margin: 10px;
+  border-radius: 5px; /* Rounds the corners of the select box */
+  background-color: white; /* Sets the background color of the select box to white */
+  color: black; /* Sets the text color inside the select box to black */
+  font-size: 16px; /* Sets the size of the text inside the select box */
+}
+
 .projects-grid {
-  padding: 40px; /* Padding around the grid */
-  text-align: center; /* Centers text within the grid */
-}
-
-.projects-grid h2 {
-  color: #333; /* Darker text color for titles */
-  margin-bottom: 20px; /* Space below the title */
+  padding: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
 }
 
 .grid-container {
-  display: grid; /* Enables grid layout */
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(250px, 1fr)
-  ); /* Creates responsive columns */
-  gap: 20px; /* Space between grid items */
-  padding: 20px; /* Padding within the grid container */
-  align-items: start; /* Aligns items to the start of their grid cell */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 40px;
 }
 
 .project-item {
-  background: white; /* Background color for project items */
-  border: 1px solid #ccc; /* Border for each item */
-  border-radius: 8px; /* Rounded corners for the items */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for a 3D effect */
-  overflow: hidden; /* Hides any overflow content */
-  display: flex; /* Enables flexbox within project items */
-  flex-direction: column; /* Stacks children of the project item vertically */
+  background: white;
+  border: 1px solid #222;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-item img {
-  width: 100%; /* Ensures images fill their container */
-  height: auto; /* Keeps image aspect ratio intact */
+  width: 100%;
+  height: auto;
 }
 
 .project-title {
-  padding: 10px; /* Padding around the title within project items */
-  color: #333; /* Text color */
-  font-size: 18px; /* Text size */
+  padding: 10px;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
 }
 
-/* Footer styling */
+.project-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.75);
+}
+
+.next-button {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  background-color: white; /* Ensures the button background is black */
+  font-size: 18px;
+  transition: background-color 0.3s, color 0.3s;
+  position: relative;
+  clear: both;
+}
+
+.next-button a {
+  color: black; /* Ensures the link is visible against a black background */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.next-button a:hover {
+  background-color: black;
+  color: white;
+}
+
 .footer {
-  width: 100%; /* Full width of the content area */
-  padding: 20px 0; /* Padding above and below the text */
-  text-align: center; /* Centers the footer text */
-  position: absolute;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  color: white; /* Text color */
-  background-color: transparent; /* Transparent background */
-  font-size: 18px; /* Text size */
-  transition: background-color 0.3s, color 0.3s; /* Transition for hover effects */
-  z-index: 10; /* Ensures footer is above most content but below modals/popups */
+  background-color: #222;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-family: "Major Mono Display", monospace;
 }
 
-.footer-link {
-    color: white;  /* Match the footer text color */
-    text-decoration: none;  /* No underline */
-    transition: color 0.3s ease;  /* Smooth transition for hover effect */
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: fit-content;
+  height: 120px;
 }
 
-.footer-link:hover {
-    background-color: white;
-    color: black;
-    text-decoration: none;
+.footer-section {
+  flex: 1; /* Makes sure that each section can grow as needed */
+}
+
+.footer-section h4 {
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 16px;
+}
+
+.footer-section ul li img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.footer-section ul li a:hover,
+.footer-section a.social-link:hover {
+  color: #00aaff;
+}
+
+.footer-section p,
+.footer-section a {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.footer-bottom {
+  padding-top: 20px;
+  font-size: 12px;
+}
+
+.footer-bottom p {
+  font-size: 12px;
+}
+
+.social-links-container {
+  display: flex;
+  justify-content: center; /* Ensure horizontal alignment */
+  gap: 20px; /* Space between each link */
+}
+
+.social-link {
+  align-items: center; /* Vertically centers the contents */
+  padding: 10px; /* Uniform padding around the image */
+  background: rgba(255, 255, 255, 0); /* Transparent background */
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.social-link img {
+  width: 28px;
+  height: 28px;
+}
+
+.social-link:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Visible background on hover */
+  transform: scale(1.1); /* Slightly enlarges the link on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds shadow for depth on hover */
 }

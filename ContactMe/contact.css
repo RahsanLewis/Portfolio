@@ -17,7 +17,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: white;
+  background-color: whitesmoke;
   /* background: url("/images/screen.jpg") no-repeat center center; */
   background-size: cover;
   z-index: -1;
@@ -25,100 +25,130 @@ body::before {
 
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 45px 20px; /* Increased padding to give more space */
-  background-color: #222;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-  position: relative; /* Ensure the logo can be absolutely positioned relative to this container */
-  z-index: 10;
+  justify-content: center;
+  padding: 10px 0px;
 }
 
-.header .logo {
-  position: absolute;
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(
-    -50%,
-    -50%
-  ); /* Offset by half its size to truly center it */
-  height: 65px; /* Adjusted to match your original size or make it proportional */
-  width: 65px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.logo {
+  margin: 0 30px; 
+  height: 70px; 
+  width: auto; 
+  transition: transform 0.3s, box-shadow 0.3s; 
 }
 
-.header .logo:hover {
-  transform: translate(-50%, -50%) scale(1.05); /* Maintain centering even when scaled */
+.logo:hover {
+  transform: scale(1.15); 
+  box-shadow: none; 
 }
 
-.nav-left,
-.nav-right {
-  display: flex;
-  flex: 1;
-  justify-content: center; /* This will align the links to center in their respective spaces */
-}
-
-.header nav a {
-  color: white;
+.nav {
+  color: black;
   text-decoration: none;
-  margin: 0 15px;
   font-size: 24px;
-}
-
-.header .nav-primary,
-.header .nav-secondary {
-  color: white;
-  text-decoration: none;
-  margin: 0 15px;
-  font-size: 18px;
   letter-spacing: 1px;
   padding: 10px;
   border-radius: 5px;
   transition: background-color 0.3s, color 0.3s;
 }
 
-.header .nav-primary:hover,
-.header .nav-secondary:hover {
-  background-color: white;
-  color: black;
+.nav a {
+  color: inherit; /* Use color from parent element */
+  text-decoration: none;
+  margin: 0 15px; /* Adjust or remove margin as needed for spacing */
+  font-size: 24px;
 }
 
-.content {
-  width: 100%;
-  min-height: 200px;
-  display: flex;
-  align-items: flex-start; /* Aligns content towards the top */
-  justify-content: center;
-  text-align: center;
+.nav:hover {
+  transform: scale(1.1); /* Makes the text grow larger */
+  color: gold; /* Text color change on hover */
+}
+
+body.dark-mode {
+  background-color: #333;
   color: white;
-  font-size: 18px;
-  transition: color 0.3s ease-in-out;
-  box-sizing: border-box;
-  flex-direction: row;
-  padding: 20px;
 }
 
-.content form {
+/* You might want to change other elements specifically */
+body.dark-mode .header, body.dark-mode .nav-text, body.dark-mode .footer {
+  background-color: #333;
+}
+
+body.dark-mode a {
+  color: #ddd;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;  /* Align children horizontally */
+  align-items: stretch;  /* Stretch the items to fill the container vertically */
+  justify-content: center;  /* Center the items horizontally */
+  width: 100%;
+  height: 550px;  /* Set the height to full viewport height, adjust as necessary */
+  padding: 0;  /* Adjust padding as needed */
+  position: relative; /* Needed for absolute positioning of the pseudo-element */
+}
+
+.container::after {
+  content: "";
+  display: block;
+  width: 80%;  /* Adjust this value to control the length of the border */
+  height: 2px;  /* Thickness of the border */
+  background-color: #CCCCCC;  /* Color of the border */
+  position: absolute;
+  bottom: 0;  /* Position at the bottom of the container */
+  left: 50%;  /* Centers the border */
+  transform: translateX(-50%);  /* Correctly centers the element */
+}
+
+.column-one {
+  flex: 1;  /* Each column takes up equal space */
+  display: flex;
+  flex-direction: column;  /* Stack content vertically in each column */
+  align-items: center;  /* Center content horizontally */
+  text-align: center;
+  font-size: 20px;  /* Adjust font size as needed */
+  padding: 20px 0px 10px 0px;  /* Adjust padding as needed */
+  height: 400px;  /* Adjust height as needed */
+}
+
+.column-one h2 {
+  font-size: 40px;  /* Adjust font size as needed */
+  margin: 30px 0px 50px 0px;  /* Adjust margin as needed */
+}
+
+.column-two {
+  flex: 1;  /* Each column takes up equal space */
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;  /* Stack content vertically in each column */
+  align-items: center;  /* Center content horizontally */
+  padding: 20px 0px 10px 0px;  /* Adjust padding as needed */
+  height: 500px;  /* Adjust height as needed */
+}
+
+.column-two form {
   width: 60%; /* Increased width for larger display */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   max-width: 700px; /* Increases max width for form */
-  padding: 30px; /* Increased padding for better spacing */
   background: rgba(0, 0, 0, 0);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
 }
 
-.content form h2 {
+.column-two form h2 {
+  font-size: 40px;
+  text-align: center;
   margin-bottom: 30px; /* Increased spacing for better separation */
   color: black;
 }
 
-.content form input,
-.content form textarea,
-.content form button {
+.column-two form input,
+.column-two textarea,
+.column-two form button {
   width: 100%;
   padding: 12px; /* Increased padding for better form usability */
   margin: 12px 0; /* Increased spacing between form elements */
@@ -129,7 +159,7 @@ body::before {
   font-size: 16px;
 }
 
-.content form button {
+.column-two form button {
   cursor: pointer;
   background-color: black;
   color: white;
@@ -137,8 +167,9 @@ body::before {
   font-family: "Major Mono Display", monospace;
 }
 
-.content form button:hover {
-  background-color: #003d82;
+.column-two form button:hover {
+  background-color: gold;
+  color: black;
 }
 
 .contact-info {
@@ -161,9 +192,11 @@ body::before {
 
 .social-links {
   display: flex;
+  justify-content: space-evenly;
   flex-direction: column; /* Align items vertically */
   align-items: center; /* Center items horizontally */
   gap: 20px; /* Increase gap for better vertical spacing */
+  font-size: 30px;
 }
 
 .social-link {
@@ -196,113 +229,24 @@ body::before {
   transform: scale(1.1); /* Slightly enlarges the link for interactivity */
 }
 
-.next-button {
-  color: white;
-  text-decoration: none;
-  margin: 0 15px;
-  font-size: 18px;
-  letter-spacing: 1px;
-  padding: 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
+.nav-text {
+  width: 100%;
   text-align: center;
+  background-color: transparent; /* Ensures the button background is black */
+  font-size: 24px;
+  transition: background-color 0.3s, color 0.3s;
+  position: relative;
+  clear: both;
+  margin: 30px 0px 0px 0px;
 }
 
-.next-button a {
+.nav-text a {
   color: black; /* Ensures the link is visible against a black background */
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.next-button a:hover {
-  background-color: black;
-  color: white;
-}
-
-.footer {
-  background-color: #222;
-  color: white;
-  padding: 15px;
-  text-align: center;
-  font-family: "Major Mono Display", monospace;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  height: fit-content;
-  height: 120px;
-}
-
-.footer-section {
-  flex: 1; /* Makes sure that each section can grow as needed */
-}
-
-.footer-section h4 {
-  margin-bottom: 30px;
-  font-size: 18px;
-}
-
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-section ul li a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-size: 16px;
-}
-
-.footer-section ul li img {
-  width: 24px;
-  height: 24px;
-  margin-right: 8px;
-}
-
-.footer-section ul li a:hover,
-.footer-section a.social-link:hover {
-  color: #00aaff;
-}
-
-.footer-section p,
-.footer-section a {
-  font-size: 16px;
-  line-height: 1.8;
-}
-
-.footer-bottom {
-  padding-top: 20px;
-  font-size: 12px;
-}
-
-.footer-bottom p {
-    font-size: 12px;
-  }
-
-.fsocial-links-container {
-  display: flex;
-  justify-content: center; /* Ensure horizontal alignment */
-  gap: 20px; /* Space between each link */
-}
-
-.fsocial-link {
-  align-items: center; /* Vertically centers the contents */
-  padding: 10px; /* Uniform padding around the image */
-  background: rgba(255, 255, 255, 0); /* Transparent background */
-  text-decoration: none;
-  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-}
-
-.fsocial-link img {
-  width: 28px;
-  height: 28px;
-}
-
-.fsocial-link:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* Visible background on hover */
-  transform: scale(1.1); /* Slightly enlarges the link on hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds shadow for depth on hover */
+.nav-text a:hover {
+  transform: scale(1.1); /* Makes the text grow larger */
+  color: gold; /* Text color change on hover */
 }

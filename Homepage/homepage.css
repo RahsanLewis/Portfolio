@@ -1,282 +1,203 @@
-body,
-html {
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   font-family: "Major Mono Display", monospace;
   font-weight: 700;
   font-style: normal;
   overflow-x: hidden;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  /* background: url("/images/screen.jpg") no-repeat center center; */
+body {
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+  background-color: whitesmoke;
   background-size: cover;
   z-index: -1;
 }
 
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 45px 20px; /* Increased padding to give more space */
-  background-color: #222;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-  position: relative; /* Ensure the logo can be absolutely positioned relative to this container */
-  z-index: 10;
+  justify-content: center;
+  padding: 10px 0px;
 }
 
-.header .logo {
-  position: absolute;
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(
-    -50%,
-    -50%
-  ); /* Offset by half its size to truly center it */
-  height: 65px; /* Adjusted to match your original size or make it proportional */
-  width: 65px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.logo {
+  margin: 0 30px;
+  height: 70px;
+  width: auto;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.header .logo:hover {
-  transform: translate(-50%, -50%) scale(1.05); /* Maintain centering even when scaled */
+.logo:hover {
+  transform: scale(1.15);
+  box-shadow: none;
 }
 
-.nav-left,
-.nav-right {
-  display: flex;
-  flex: 1;
-  justify-content: center; /* This will align the links to center in their respective spaces */
-}
-
-.header nav a {
-  color: white;
+.nav {
+  color: black;
   text-decoration: none;
-  margin: 0 15px;
   font-size: 24px;
-}
-
-.header .nav-primary,
-.header .nav-secondary {
-  color: white;
-  text-decoration: none;
-  margin: 0 15px;
-  font-size: 18px;
   letter-spacing: 1px;
   padding: 10px;
   border-radius: 5px;
   transition: background-color 0.3s, color 0.3s;
 }
 
-.header .nav-primary:hover,
-.header .nav-secondary:hover {
-  background-color: white;
-  color: black;
+.nav a {
+  color: inherit;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 24px;
 }
 
-.featured-project {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  height: fit-content;
-  margin: 50px 0px 0px 0px;
-  padding-bottom: 50px;
-  width: 100%;
+.nav:hover {
+  transform: scale(1.1);
+  color: gold;
 }
 
-.project-card {
-  width: 80%;
-  height: 500px;
-  background: rgba(255, 255, 255, 1);
-  border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
+body.dark-mode {
+  background-color: #333;
+  color: white;
+}
+
+/* You might want to change other elements specifically */
+body.dark-mode .header, body.dark-mode .nav-text, body.dark-mode .footer {
+  background-color: #333;
+}
+
+body.dark-mode a {
+  color: #ddd;
+}
+
+.container {
   display: flex;
   flex-direction: row;
-  align-items: center; /* Ensures vertical centering of children */
-  justify-content: space-between;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.75);
-}
-
-.project-card img {
-  width: 60%;
-  height: 100%; /* Make image fill the card height */
-  object-fit: cover;
-}
-
-.project-info {
-  width: 40%;
-  color: black;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Vertically center content */
-  text-align: center;
-  letter-spacing: 1px;
-  overflow: hidden; /* Hide overflow to maintain clean edges */
-  height: 80%; /* Reduce the effective height filled by text */
-  margin: auto 0; /* Center the smaller content area vertically */
-}
-
-h1,
-h2 {
-  margin-bottom: 10px;
-  font-size: 40px;
-}
-
-.about-me {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
-  padding: 40px 20px;
-  margin: 20px auto;
-  max-width: 960px;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  color: white;
-  text-align: center;
-  font-size: 20px;
-  z-index: 2;
-}
-
-.about-me h2 {
-  margin-bottom: 20px;
-  font-size: 28px;
-  color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-
-.about-me p {
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-.next-button {
   width: 100%;
-  padding: 20px 0;
-  text-align: center;
-  background-color: white; /* Ensures the button background is black */
-  font-size: 18px;
-  transition: background-color 0.3s, color 0.3s;
-  position: relative;
-  clear: both;
-}
-
-.next-button a {
-  color: black; /* Ensures the link is visible against a black background */
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.next-button a:hover {
-    background-color: black;
-    color: white;
-}
-
-.footer {
-  background-color: #222;
-  color: white;
-  padding: 15px;
-  text-align: center;
-  font-family: "Major Mono Display", monospace;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  height: fit-content;
-  height: 120px;
-}
-
-.footer-section {
-  flex: 1; /* Makes sure that each section can grow as needed */
-}
-
-.footer-section h4 {
-  margin-bottom: 30px;
-  font-size: 18px;
-}
-
-.footer-section ul {
-  list-style: none;
+  height: 650px;
   padding: 0;
 }
 
-.footer-section ul li a {
+.column-one {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px 60px 10px 60px;
+}
+
+.column-one h1 {
+  font-size: 45px;
+  margin: 30px 0px 50px 0px;
+}
+
+.column-two {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 65px 10px 0px;
+  height: 600px;
+}
+
+.menu-link {
+  width: 100%;
+  text-align: center;
+  background-color: transparent;
+  position: relative;
+  color: black;
+  text-decoration: none;
+  display: block;
+}
+
+.menu-link h2 {
+  font-size: 90px;
+  margin: 30px 50px;
+  transition: transform 0.3s ease, background-color 0.3s, color 0.3s;
+  display: inline-block;
+}
+
+.menu-link h2:hover {
+  transform: scale(1.1);
+  color: gold;
+}
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  transition: transform 3s ease;
+}
+
+.hero-section:hover .hero-image {
+  transform: scale(1.1);
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 2;
+  backdrop-filter: blur(5px);
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 10px 0;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content a {
+  font-size: 24px;
   color: white;
   text-decoration: none;
   transition: color 0.3s ease;
-  font-size: 16px;
 }
 
-.footer-section ul li img {
-  width: 24px;
-  height: 24px;
-  margin-right: 8px;
+.hero-content a:hover {
+  color: #FFD700;
 }
 
-.footer-section ul li a:hover,
-.footer-section a.social-link:hover {
-  color: #00aaff;
+.project-link h2 {
+  font-size: 36px;
 }
 
-.footer-section p,
-.footer-section a {
-  font-size: 16px;
-  line-height: 1.8;
+.project-link p {
+  font-size: 18px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
-.footer-bottom {
-  padding-top: 20px;
-  font-size: 12px;
+.project-link:hover p {
+  opacity: 1;
 }
-
-.footer-bottom p {
-    font-size: 12px;
-  }
-
-.social-links-container {
-    display: flex;
-    justify-content: center; /* Ensure horizontal alignment */
-    gap: 20px; /* Space between each link */
-  }
-  
-  .social-link {
-    align-items: center; /* Vertically centers the contents */
-    padding: 10px; /* Uniform padding around the image */
-    background: rgba(255, 255, 255, 0); /* Transparent background */
-    text-decoration: none;
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .social-link img {
-    width: 28px;
-    height: 28px;
-  }
-  
-  .social-link:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Visible background on hover */
-    transform: scale(1.1); /* Slightly enlarges the link on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds shadow for depth on hover */
-  }
-  
